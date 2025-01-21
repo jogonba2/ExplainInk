@@ -15,9 +15,6 @@ You may obtain a copy of the License at
 
 <h1 align="center">✒️ ExplainInk </h1> 
 <p align="center">
-    <a href="https://dev.azure.com/symanto/Symanto%20Research/_build?definitionId=467">
-        <img alt="azure_badge" src="https://dev.azure.com/symanto/Symanto%20Research/_apis/build/status%2FPkg.ExplainInk?branchName=master">
-    </a>
     <a href="LICENSE">
         <img alt="license" src="https://img.shields.io/badge/license-CC_BY_NC_ND_4.0-green">
     </a>
