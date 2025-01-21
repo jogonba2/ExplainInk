@@ -1,0 +1,14 @@
+{
+    "dataset": {
+        "name": "az://snlp-data/explainink/fair_rationales_sst2",
+        "args": {},
+        "text_column": "text",
+        "rationales_column": "rationales"
+    },
+    "evaluation_params": {
+        "discretizer_name": "gt_mean",
+        "discretizer_params": {},
+        "tokenizer": "bert-base-uncased"
+    },
+    "attributions_file": "./sst2_integrated_gradients.json"
+}

@@ -1,0 +1,33 @@
+{
+    "dataset": {
+        "name": "az://snlp-data/explainink/hatexplain",
+        "args": {},
+        "text_column": "text",
+        "label_column": "label"
+    },
+    "model": {
+        "class": "HuggingFaceClassifier",
+        "checkpoint": "./checkpoints/hatexplain/huggingface/bert/checkpoint-1443/model.safetensors",
+        "params": {
+            "encoder_params": {
+                "pretrained_model_name_or_path": "bert-base-uncased"
+            },
+            "tokenizer_params": {},
+            "classifier_params": {
+                "num_labels": 3
+            },
+            "training_params": {},
+            "inference_params": {
+                "per_device_eval_batch_size": 16,
+                "output_dir": "./tmp"
+            }
+        }
+    },
+    "explainer": {
+        "class": "GradientXInputExplainer",
+        "requires_targets": true,
+        "instantiation_params": {},
+        "batch_size": 16
+    },
+    "output_path": "./results/hatexplain/huggingface/bert/GradientXInputExplainer/attributions.json"
+}

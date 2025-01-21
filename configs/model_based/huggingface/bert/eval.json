@@ -1,0 +1,26 @@
+{
+    "dataset": {
+        "name": "imdb",
+        "args": {}
+    },
+    "model": {
+        "class": "HuggingFaceClassifier",
+        "checkpoint": "./checkpoints/imdb/huggingface/bert/checkpoint-3/model.safetensors",
+        "params": {
+            "encoder_params": {
+                "pretrained_model_name_or_path": "bert-base-uncased"
+            },
+            "tokenizer_params": {},
+            "classifier_params": {
+                "num_labels": 2,
+                "dropout": 0.0
+            },
+            "training_params": {},
+            "inference_params": {
+                "per_device_eval_batch_size": 32,
+                "output_dir": "./tmp"
+            }
+        }
+    },
+    "output_path": "./results/imdb/huggingface/bert/test_results.json"
+}

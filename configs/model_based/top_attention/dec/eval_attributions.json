@@ -1,0 +1,15 @@
+{
+    "dataset": {
+        "name": "az://snlp-data/explainink/movie_rationales",
+        "args": {},
+        "text_column": "text",
+        "rationales_column": "rationales"
+    },
+    "evaluation_params": {
+        "discretizer_name": "gt_mean",
+        "discretizer_params": {},
+        "tokenizer": "bert-base-uncased"
+    },
+    "attributions_file": "./results/movie_rationales/top_attention_mask_special_tokens/dec/TopAttentionExplainer/attributions.json",
+    "output_path": "./results/movie_rationales/top_attention_mask_special_tokens/dec/TopAttentionExplainer/test_results.json"
+}

@@ -1,0 +1,30 @@
+{
+    "dataset": {
+        "name": "az://snlp-data/explainink/movie_rationales",
+        "args": {},
+        "text_column": "text",
+        "label_column": "label"
+    },
+    "model": {
+        "class": "TopAttentionDeClassifier",
+        "params": {
+            "encoder_params": {
+                "model_name_or_path": "./checkpoints/movie_rationales/top_attention_mask_special_tokens/dec"
+            },
+            "tokenizer_params": {},
+            "classifier_params": {
+                "label2text": {
+                    "0": "negative",
+                    "1": "positive"
+                },
+                "batch_size": 4
+            },
+            "attention_params": {
+                "class_name": "AttentionLayer",
+                "mask_special_tokens": true
+            },
+            "training_params": {},
+            "inference_params": {}
+        }
+    }
+}

@@ -1,0 +1,37 @@
+{
+    "dataset": {
+        "name": "az://snlp-data/explainink/hatexplain",
+        "args": {},
+        "text_column": "text",
+        "label_column": "label"
+    },
+    "model": {
+        "class": "TopAttentionHuggingFaceClassifier",
+        "checkpoint": "/data/research/users/jgonzalez/Users.jagb.ExplainInk/checkpoints/hatexplain/bert/context_top_attention_conicity_mask_special_tokens/checkpoint-4810/model.safetensors",
+        "params": {
+            "encoder_params": {
+                "pretrained_model_name_or_path": "bert-base-uncased"
+            },
+            "tokenizer_params": {},
+            "classifier_params": {
+                "num_labels": 3,
+                "dropout": 0.1
+            },
+            "attention_params": {
+                "class_name": "ContextAttentionLayer",
+                "attention_kl_loss": false,
+                "add_embeddings": false,
+                "mask_special_tokens": true,
+                "conicity_loss": true
+            },
+            "training_params": {},
+            "inference_params": {}
+        }
+    },
+    "explainer": {
+        "class": "TopAttentionExplainer",
+        "pass_reference_targets": true,
+        "instantiation_params": {},
+        "batch_size": 16
+    }
+}

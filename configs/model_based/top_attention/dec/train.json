@@ -1,0 +1,34 @@
+{
+    "dataset": {
+        "name": "az://snlp-data/explainink/hatexplain",
+        "args": {}
+    },
+    "model": {
+        "class": "TopAttentionFFTDualEncoderClassifier",
+        "params": {
+            "encoder_params": {
+                "pretrained_model_name_or_path": "all-mpnet-base-v2"
+            },
+            "tokenizer_params": {},
+            "classifier_params": {
+                "label2text": {
+                    "0": "Hate speech toward the inherent characteristics of a group or individual.",
+                    "1": "It is not offensive or hate speech.",
+                    "2": "Offensive towards an group or individual."
+                },
+                "epochs": 10,
+                "lr": 2e-5,
+                "batch_size": 32
+            },
+            "attention_params": {
+                "class_name": "ContextAttentionLayer",
+                "mask_special_tokens": true
+            },
+            "training_params": {
+                "strategy": "default",
+                "output_dir": "./checkpoints/hatexplain/dec/context_top_attention_mask_special_tokens"
+            },
+            "inference_params": {}
+        }
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "dataset": {
+        "name": "az://snlp-data/explainink/hatexplain",
+        "args": {}
+    },
+    "model": {
+        "class": "HuggingFaceClassifier",
+        "params": {
+            "encoder_params": {
+                "pretrained_model_name_or_path": "bert-base-uncased"
+            },
+            "tokenizer_params": {},
+            "classifier_params": {
+                "num_labels": 3
+            },
+            "training_params": {
+                "per_device_train_batch_size": 32,
+                "num_train_epochs": 3,
+                "logging_steps": 10,
+                "save_strategy": "epoch",
+                "save_total_limit": 1,
+                "fp16": true,
+                "output_dir": "./checkpoints/hatexplain/huggingface/bert"
+            },
+            "inference_params": {
+                "per_device_eval_batch_size": 32,
+                "output_dir": "./tmp"
+            }
+        }
+    },
+    "output_path": "./results/hatexplain/huggingface/bert/test_results.json"
+}

@@ -1,0 +1,51 @@
+{
+    "dataset": {
+        "name": "az://snlp-data/explainink/movie_rationales",
+        "args": {},
+        "text_column": "text",
+        "label_column": "label"
+    },
+    "model": {
+        "class": "TopAttentionHuggingFaceClassifier",
+        "checkpoint": "/home/jgonzalez/Pkg.ExplainInk/checkpoints/movie_rationales/bert/context_top_maxpooling_conicity_mask_special_tokens/checkpoint-500/model.safetensors",
+        "params": {
+            "encoder_params": {
+                "pretrained_model_name_or_path": "bert-base-uncased"
+            },
+            "tokenizer_params": {},
+            "classifier_params": {
+                "num_labels": 2,
+                "dropout": 0.1
+            },
+            "attention_params": {
+                "class_name": "MaxPoolingLayer",
+                "attention_kl_loss": false,
+                "add_embeddings": false,
+                "mask_special_tokens": true,
+                "conicity_loss": true
+            },
+            "training_params": {},
+            "inference_params": {}
+        }
+    },
+    "explainer": {
+        "class": "TopAttentionExplainer",
+        "pass_reference_targets": false,
+        "instantiation_params": {
+            "language": "en",
+            "mask_scores": {
+                "stopwords": true,
+                "punctuation": true,
+                "shorter": 3
+            }
+        },
+        "batch_size": 16
+    },
+    "visualizer": {
+        "visualizer_class": "SimpleVisualizer",
+        "instantiation_params": {
+            "scaler_fn_name": "soft_higher_mean",
+            "mask_zeros": true
+        }
+    }
+}

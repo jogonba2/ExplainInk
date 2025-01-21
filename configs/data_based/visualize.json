@@ -1,0 +1,26 @@
+{
+    "dataset": {
+        "name": "az://snlp-data/explainink/fair_rationales_sst2",
+        "args": {},
+        "text_column": "text",
+        "label_column": "label"
+    },
+    "explainer": {
+        "class": "KeyBERTExplainer",
+        "instantiation_params": {
+            "inference_params": {
+                "keyphrase_ngram_range": [
+                    1,
+                    3
+                ],
+                "top_n": 1000
+            }
+        }
+    },
+    "visualizer": {
+        "visualizer_class": "SimpleVisualizer",
+        "instantiation_params": {
+            "scaler_fn_name": "soft_higher_mean"
+        }
+    }
+}

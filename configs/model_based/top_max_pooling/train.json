@@ -1,0 +1,39 @@
+{
+    "dataset": {
+        "name": "az://snlp-data/explainink/movie_rationales",
+        "args": {}
+    },
+    "model": {
+        "class": "TopAttentionHuggingFaceClassifier",
+        "params": {
+            "encoder_params": {
+                "pretrained_model_name_or_path": "bert-base-uncased"
+            },
+            "tokenizer_params": {},
+            "classifier_params": {
+                "num_labels": 2,
+                "dropout": 0.1
+            },
+            "attention_params": {
+                "class_name": "MaxPoolingLayer",
+                "attention_kl_loss": false,
+                "add_embeddings": false,
+                "mask_special_tokens": true,
+                "conicity_loss": true
+            },
+            "training_params": {
+                "per_device_train_batch_size": 16,
+                "num_train_epochs": 5,
+                "logging_steps": 10,
+                "save_strategy": "epoch",
+                "save_total_limit": 1,
+                "fp16": true,
+                "output_dir": "./checkpoints/movie_rationales/bert/context_top_maxpooling_conicity_mask_special_tokens/"
+            },
+            "inference_params": {
+                "per_device_eval_batch_size": 32,
+                "output_dir": "./tmp"
+            }
+        }
+    }
+}
